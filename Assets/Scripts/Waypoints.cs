@@ -9,9 +9,10 @@ public class Waypoints : MonoBehaviour
 
     void wake()
     {
-        points = new Transform[transform.childCount];
+        //load all child of waypoints
+        points = new Transform[transform.childCount];//create 14 arrays
 
-        for (int i = 0; i < points.Length; i++)
+        for (int i = 0; i < points.Length; i++)//llop through array and fill them
         {
             points[i] = transform.GetChild(i);
 

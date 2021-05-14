@@ -7,7 +7,7 @@ public class Waypoints : MonoBehaviour
     //acces from anywhere
     public static Transform[] points;
 
-    void wake()
+    void Awake()
     {
         //load all child of waypoints
         points = new Transform[transform.childCount];//create 14 arrays
@@ -17,7 +17,11 @@ public class Waypoints : MonoBehaviour
             points[i] = transform.GetChild(i);
 
         }
+
     }
+
+
+     
 
 
 }

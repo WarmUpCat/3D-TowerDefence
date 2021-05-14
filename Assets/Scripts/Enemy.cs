@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+ 
 public class Enemy : MonoBehaviour
 {
 
@@ -12,19 +13,26 @@ public class Enemy : MonoBehaviour
    void Start()
     {
         // use the array created in Waypoint
-        target = Waypoints.points[0]; //the first waypoint
+         target = Waypoints.points[0]; //the first waypoint
+        //currentTarget = Waypoints.points[0];
 
     }
 
    void Update()
     {
+        
+        
         //get the direction vector to move to and move in the direction 
 
         
         Vector3 dir = target.position - transform.position;
+
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);  
 
 
     }
+
+
+  
 
 }

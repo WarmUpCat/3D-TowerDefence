@@ -9,14 +9,14 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private int waypointIndex = 0; //move throu each index to get to END
 
-    private void Start()
+   void Start()
     {
         // use the array created in Waypoint
         target = Waypoints.points[0]; //the first waypoint
 
     }
 
-    private void Update()
+   void Update()
     {
         //get the direction vector to move to and move in the direction 
 

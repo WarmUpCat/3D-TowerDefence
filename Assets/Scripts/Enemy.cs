@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         //get the direction vector to move to and move in the direction 
+
+        
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);  
 

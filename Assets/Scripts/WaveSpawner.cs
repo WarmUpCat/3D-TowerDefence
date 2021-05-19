@@ -27,11 +27,11 @@ public class WaveSpawner : MonoBehaviour
     
     void SpawnWave()
     {
-        for (int i = 0; i < waveNumber; i++)
-        {
+        //for (int i = 0; i < waveNumber; i++)
+        //{
             SpawnEnemy();
             
-        }
+        //}
         waveNumber++;
     }
 

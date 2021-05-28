@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a786385bcf8fae24a9d1b7636c80b33b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,4 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverMat: {fileID: 2100000, guid: d30875fd8e6f61347b6a814254166a81, type: 2}
   positionOffset: {x: 0, y: 0.5, z: 0}
+  startMat: {fileID: 2100000, guid: a786385bcf8fae24a9d1b7636c80b33b, type: 2}

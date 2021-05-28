@@ -5,18 +5,19 @@ namespace Cody_Towers
 {
     public class Node : MonoBehaviour
     {
-        public Color hoverColor;
+        public Material hoverMat;
         public Vector3 positionOffset;
 
         private GameObject tower;
 
         private Renderer rend;
-        private Color startColor;
+        public Material startMat;
         BuildManager buildManager;
         void Start()
         {
+
             rend = GetComponent<Renderer>();
-            startColor = rend.material.color;
+            rend.material = startMat;
             buildManager = BuildManager.instance;
 
         }
@@ -45,17 +46,17 @@ namespace Cody_Towers
             if (buildManager.GetTowerToBuild() == null)
                 return;
 
-            rend.material.color = hoverColor;
+            rend.material = hoverMat;
 
         }
 
         private void OnMouseExit()
         {
-            rend.material.color = startColor;
+
+            rend.material = startMat;
 
         }
 
-        // Update is called once per frame
         void Update()
         {
 

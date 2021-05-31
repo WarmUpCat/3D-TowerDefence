@@ -14,14 +14,14 @@ public class Shop : MonoBehaviour
 
     public void PurchaseStandardTower()
     {
-        Debug.Log("Standard Tower purchased");
+        Debug.Log("Standard Tower Selected");
         buildManager.SetTowerToBuild(buildManager.standardTowerPrefab); //choose what tower to build by calling public void SetTowerToBuild(GameObject tower) in BuildManager
 
     }
 
     public void PurchaseAnotherTower()
     {
-        Debug.Log("Another Tower purchased");
+        Debug.Log("Another Tower Selected");
         buildManager.SetTowerToBuild(buildManager.anotherTowerPrefab);
     }
 }

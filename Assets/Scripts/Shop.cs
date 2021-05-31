@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     BuildManager buildManager;
-    private void Start()
+
+    void Start()
     {
         buildManager = BuildManager.instance;
     }

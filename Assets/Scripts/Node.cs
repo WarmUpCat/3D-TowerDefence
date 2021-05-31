@@ -18,7 +18,7 @@ public class Node : MonoBehaviour
 
     void Start()
     {
-        rend = GetComponent<Renderer>();//
+        rend = GetComponent<Renderer>();
 
         startColor = rend.material.color;
 
@@ -32,7 +32,7 @@ public class Node : MonoBehaviour
         if(EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (buildManager.GetTowerToBuild()== null)
+        if (buildManager.GetTowerToBuild() == null)
         {
             return;
         }
@@ -43,12 +43,16 @@ public class Node : MonoBehaviour
             return;
         }
 
+
+        //build tower
         GameObject towerToBuild = buildManager.GetTowerToBuild();
-        //tower = (GameObject)Instantiate(towerToBuild, transform.position + positionOffset, transform );
+
+        //build tower
+        tower = (GameObject)Instantiate(towerToBuild, transform.position + positionOffset, transform.rotation );
 
     }
 
-    private void OnMouseEnter() ///called every time mouse passes by collider of this object- to notify we can build a tower on the node
+    void OnMouseEnter() ///called every time mouse passes by collider of this object- to notify we can build a tower on the node
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;

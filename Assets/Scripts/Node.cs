@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     public Color hoverColor;
-    public Vector3 positionOffset;
+    //public Vector3 positionOffset;
 
     private GameObject tower;
 
@@ -14,7 +14,7 @@ public class Node : MonoBehaviour
 
     private Color startColor; //start color + exit color
 
-    BuildManager buildManager;
+    //BuildManager buildManager;
 
     void Start()
     {
@@ -22,20 +22,20 @@ public class Node : MonoBehaviour
 
         startColor = rend.material.color;
 
-        buildManager = BuildManager.instance;
+        //buildManager = BuildManager.instance;
     }
 
     
     void onMouseDown()
     {
 
-        if(EventSystem.current.IsPointerOverGameObject())
-            return;
+        //if(EventSystem.current.IsPointerOverGameObject())
+        //    return;
 
-        if (buildManager.GetTowerToBuild() == null)
-        {
-            return;
-        }
+        //if (buildManager.GetTowerToBuild() == null)
+        //{
+        //    return;
+        //}
 
         if (tower != null)
         {
@@ -44,23 +44,27 @@ public class Node : MonoBehaviour
         }
 
 
-        //build tower
-        GameObject towerToBuild = buildManager.GetTowerToBuild();
+        GameObject towerToBuild = BuildManager.instance.GetTowerToBuild();
+        tower = (GameObject)Instantiate(towerToBuild, transform.position, transform.rotation);
+
 
         //build tower
-        tower = (GameObject)Instantiate(towerToBuild, transform.position + positionOffset, transform.rotation );
+        //GameObject towerToBuild = buildManager.GetTowerToBuild();
+
+        //build tower
+        //tower = (GameObject)Instantiate(towerToBuild, transform.position + positionOffset, transform.rotation );
 
     }
 
     void OnMouseEnter() ///called every time mouse passes by collider of this object- to notify we can build a tower on the node
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        //if (EventSystem.current.IsPointerOverGameObject())
+        //    return;
 
-        if(buildManager.GetTowerToBuild() == null)
-        {
-            return;
-        }
+        //if(buildManager.GetTowerToBuild() == null)
+        //{
+        //    return;
+        //}
         rend.material.color = hoverColor;
     }
 

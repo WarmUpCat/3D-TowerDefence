@@ -1,45 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : MonoBehaviour
+namespace Cody_Towers
 {
-    public static BuildManager instance;
-
-    void Awake()  //singletone instance
+    public class BuildManager : MonoBehaviour
     {
-        if(instance != null)
+        public static BuildManager instance;
+        private void Awake()
         {
-            Debug.LogError("More than one build manager in scene!");
-            return;
+            if (instance != null)
+            {
+                Debug.LogError("More than one BuildManager in scene!");
+            }
+            instance = this;
+
         }
+        public GameObject standartTowerPrefab;
+        public GameObject anotherTowerPrefab;
+        private GameObject TowerToBuild;
 
-        instance = this;
+        public GameObject GetTowerToBuild()
+        {
+            return TowerToBuild;
+        }
+        public void setTurretToBuild(GameObject tower)
+        {
+            TowerToBuild = tower;
 
+
+        }
     }
-
-
-
-    public GameObject standardTowerPrefab;
-    //public GameObject anotherTowerPrefab;
-
-    private void Start()
-    {
-        towerToBuild = standardTowerPrefab;
-    }
-
-    private GameObject towerToBuild;
-
-    public GameObject GetTowerToBuild()
-    {
-        return towerToBuild;
-    }
-
-
-    //Below will be called from other methods- will change what tower to build  - willbe called from Shop class- purchaseStandardTower() and public void PurchaseAnotherTower()      
-    public void SetTowerToBuild(GameObject tower)  
-    {
-        towerToBuild = tower;
-    }
-
 }

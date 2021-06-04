@@ -1,76 +1,65 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Node : MonoBehaviour
+namespace Cody_Towers
 {
-    public Color hoverColor;
-    //public Vector3 positionOffset;
-
-    private GameObject tower;
-
-    private Renderer rend;//don't use renderer as keyword for name -then assign in start- then change the rend color in OnMouseDown
-
-    private Color startColor; //start color + exit color
-
-    //BuildManager buildManager;
-
-    void Start()
+    public class Node : MonoBehaviour
     {
-        rend = GetComponent<Renderer>();
+        public Material hoverMat;
+        public Vector3 positionOffset;
 
-        startColor = rend.material.color;
+        private GameObject tower;
 
-        //buildManager = BuildManager.instance;
-    }
-
-    
-    void onMouseDown()
-    {
-
-        //if(EventSystem.current.IsPointerOverGameObject())
-        //    return;
-
-        //if (buildManager.GetTowerToBuild() == null)
-        //{
-        //    return;
-        //}
-
-        if (tower != null)
+        private Renderer rend;
+        public Material startMat;
+        BuildManager buildManager;
+        void Start()
         {
-            Debug.Log("Can't build there! - TODO: Display on screen");
-            return;
+
+            rend = GetComponent<Renderer>();
+            rend.material = startMat;
+            buildManager = BuildManager.instance;
+
+        }
+        private void OnMouseDown()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            if (buildManager.GetTowerToBuild() == null)
+                return;
+                if (tower != null)
+                {
+                    Debug.Log("Cant Build There!!! - TODO: Display on screen");
+                    return;
+
+                }
+            GameObject towerToBuild = BuildManager.instance.GetTowerToBuild();
+            tower = (GameObject)Instantiate(towerToBuild, transform.position + positionOffset, transform.rotation);
+
+        }
+        private void OnMouseEnter()
+        {
+            if(EventSystem.current.IsPointerOverGameObject())
+                return;
+            
+            if (buildManager.GetTowerToBuild() == null)
+                return;
+
+            rend.material = hoverMat;
+
         }
 
+        private void OnMouseExit()
+        {
 
-        GameObject towerToBuild = BuildManager.instance.GetTowerToBuild();
-        tower = (GameObject)Instantiate(towerToBuild, transform.position, transform.rotation);
+            rend.material = startMat;
 
+        }
 
-        //build tower
-        //GameObject towerToBuild = buildManager.GetTowerToBuild();
+        void Update()
+        {
 
-        //build tower
-        //tower = (GameObject)Instantiate(towerToBuild, transform.position + positionOffset, transform.rotation );
-
+        }
     }
-
-    void OnMouseEnter() ///called every time mouse passes by collider of this object- to notify we can build a tower on the node
-    {
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //    return;
-
-        //if(buildManager.GetTowerToBuild() == null)
-        //{
-        //    return;
-        //}
-        rend.material.color = hoverColor;
-    }
-
-    private void OnMouseExit()
-    {
-        rend.material.color = startColor; //chage the mouse color back when exiting the collider
-    }
-
 }

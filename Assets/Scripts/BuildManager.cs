@@ -2,44 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : MonoBehaviour
+namespace HGK
 {
-    public static BuildManager instance;
-
-    void Awake()  //singletone instance
+    public class BuildManager : MonoBehaviour
     {
-        if(instance != null)
+        public static BuildManager instance;
+
+        void Awake()  //singletone instance
         {
-            Debug.LogError("More than one build manager in scene!");
-            return;
+            if (instance != null)
+            {
+                Debug.LogError("More than one build manager in scene!");
+                return;
+            }
+
+            instance = this;
+
         }
 
-        instance = this;
-
-    }
 
 
+        public GameObject standardTowerPrefab;
+        //public GameObject anotherTowerPrefab;
 
-    public GameObject standardTowerPrefab;
-    //public GameObject anotherTowerPrefab;
+        private void Start()
+        {
+            towerToBuild = standardTowerPrefab;
+        }
 
-    private void Start()
-    {
-        towerToBuild = standardTowerPrefab;
-    }
+        private GameObject towerToBuild;
 
-    private GameObject towerToBuild;
-
-    public GameObject GetTowerToBuild()
-    {
-        return towerToBuild;
-    }
+        public GameObject GetTowerToBuild()
+        {
+            return towerToBuild;
+        }
 
 
-    //Below will be called from other methods- will change what tower to build  - willbe called from Shop class- purchaseStandardTower() and public void PurchaseAnotherTower()      
-    public void SetTowerToBuild(GameObject tower)  
-    {
-        towerToBuild = tower;
+        //Below will be called from other methods- will change what tower to build  - willbe called from Shop class- purchaseStandardTower() and public void PurchaseAnotherTower()      
+        public void SetTowerToBuild(GameObject tower)
+        {
+            towerToBuild = tower;
+        }
+
     }
 
 }

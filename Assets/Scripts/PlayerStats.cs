@@ -7,10 +7,10 @@ namespace HGK
     public class PlayerStats : MonoBehaviour
     {
         public static int Lives;
-        public 
+        public int startLives = 20;
         void Start()
         {
-
+            Lives = startLives;
         }
 
         

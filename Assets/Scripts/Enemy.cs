@@ -22,6 +22,11 @@ namespace HGK
 
         }
 
+
+     
+        /// <summary>
+        /// if waypoint[waypoint index] is reached then destroy game object by calling EndPath(). Once waypoint is reached set the waypoint back to 0 index. If random pick random waypoints
+        /// </summary>
         void Update()
         {//get the direction vector to move to and move in the direction 
 
@@ -49,11 +54,13 @@ namespace HGK
                 if (distanceToWaypoint < 1f)
                 {
                     wavepointIndex++;
+                    EndPath();
                 }
 
-                if (wavepointIndex >= Waypoints.points.Length)
+                if (wavepointIndex >= Waypoints.points.Length-1)
                 {
                     wavepointIndex = 0;
+                    
                 }
             }
 
@@ -61,6 +68,18 @@ namespace HGK
 
 
         }
+
+
+        /// <summary>
+        /// destroy game object
+        /// And lives is minused or lost
+        /// </summary>
+        void EndPath()
+        {
+            PlayerStats.Lives--;
+            Destroy(gameObject);
+        }
+
 
         //void GetNextWaypoint()
         //{

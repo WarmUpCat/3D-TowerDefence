@@ -8,6 +8,12 @@ namespace HGK
     {
         public float speed = 10f;
 
+        //for taking damage
+        public int health = 100;
+        //for getting money for killing enemy
+        //used in void Die() below and sffects playerstats variable money-yet to nbe made
+        public int value = 50;
+
         private Transform target;
         private int wavepointIndex = 0; //move throu each index to get to END
 
@@ -22,6 +28,31 @@ namespace HGK
 
         }
 
+        //will be accessed form bulletHandler class and will reduce haeath according to damage taken in the parameter
+        public void TakeDamage(int amount)
+        {
+            health -= amount;
+
+            //if health is zero call the die method below
+            if(health <= 0)
+            {
+                Die();
+            }
+        }
+
+        /// <summary>
+        /// called when health become zero,
+        /// will only be called here from baove so private 
+        /// add effects when die and will add some money
+        /// </summary>
+        void Die()
+        {
+            //To do: get money for value of killing enemy
+            //PlayerStats.Money += value;
+
+            //kill if health = 0
+            Destroy(gameObject);
+        }
 
      
         /// <summary>

@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LivesUI : MonoBehaviour
+namespace HGK
 {
-    public Text livesText;
-    
-
-    // Update is called once per frame
-    void Update()
+    public class LivesUI : MonoBehaviour
     {
-        //gets the lives fromplayer stats to display in LivesUI
-        livesText.text = PlayerStats.Lives.ToString() + " Lives";
+        public Text livesText;
+
+
+        // Update is called once per frame
+        void Update()
+        {
+            //gets the lives fromplayer stats to display in LivesUI
+            livesText.text = PlayerStats.Lives.ToString() + " Lives";
+        }
     }
 }

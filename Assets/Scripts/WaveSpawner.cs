@@ -30,6 +30,10 @@ namespace HGK
 
         void SpawnWave()
         {
+
+            //Count the nu,ber of waves for GameOver UI-Static
+            PlayerStats.Rounds++;
+
             //for (int i = 0; i < waveNumber; i++)
             //{
             SpawnEnemy();

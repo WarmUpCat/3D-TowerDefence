@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 
 namespace HGK
 {
     public class Enemy : MonoBehaviour
     {
-        public float speed = 10f;
+        public float Speed = 10f;
 
         //for taking damage
-        public int health = 100;
+        public float startHealth = 100;
+        private float health;
+
+
         //for getting money for killing enemy
         //used in void Die() below and sffects playerstats variable money-yet to nbe made
         public int value = 50;
@@ -21,8 +24,16 @@ namespace HGK
 
         NavMeshAgent agent;
 
+
+        //Health bar image
+        [Header("Unity Inspect")]
+        public Image healthBar;
+
         void Start()
         {// use the array created in Waypoint
+
+            health = startHealth;
+
             agent = GetComponent<NavMeshAgent>();
             target = Waypoints.points[0]; //the first waypoint
 
@@ -32,6 +43,10 @@ namespace HGK
         public void TakeDamage(int amount)
         {
             health -= amount;
+
+            //healthbar changes -in range betweeen 0 and 1
+            healthBar.fillAmount = health / startHealth;
+
 
             //if health is zero call the die method below
             if(health <= 0)
@@ -50,6 +65,8 @@ namespace HGK
             //To do: get money for value of killing enemy
             //PlayerStats.Money += value;
 
+            //chage static counter when enemey die also in Endpath() below
+            WaveSpawner.EnemiesALive--; 
             //kill if health = 0
             Destroy(gameObject);
         }
@@ -108,6 +125,8 @@ namespace HGK
         void EndPath()
         {
             PlayerStats.Lives--;
+            //chage static counter when enemey die
+            WaveSpawner.EnemiesALive--;
             Destroy(gameObject);
         }
 

@@ -1,49 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
+using HGK;
 using UnityEngine;
 
-namespace HGK
+namespace Cody_Towers
 {
     public class BuildManager : MonoBehaviour
     {
         public static BuildManager instance;
-
-        void Awake()  //singletone instance
+        private void Awake()
         {
             if (instance != null)
             {
-                Debug.LogError("More than one build manager in scene!");
-                return;
+                Debug.LogError("More than one BuildManager in scene!");
             }
-
             instance = this;
 
         }
+        public GameObject standartTowerPrefab;
+        public GameObject anotherTowerPrefab;
+        //private GameObject towerToBuild;
+        private TowerBluePrint towerToBuild;
 
-
-
-        public GameObject standardTowerPrefab;
-        //public GameObject anotherTowerPrefab;
-
-        private void Start()
-        {
-            towerToBuild = standardTowerPrefab;
-        }
-
-        private GameObject towerToBuild;
-
-        public GameObject GetTowerToBuild()
-        {
-            return towerToBuild;
-        }
-
-
-        //Below will be called from other methods- will change what tower to build  - willbe called from Shop class- purchaseStandardTower() and public void PurchaseAnotherTower()      
-        public void SetTowerToBuild(GameObject tower)
+        public bool canBuild {get { return towerToBuild != null; } }
+        
+        public void SelectTowerToBuild(TowerBluePrint tower)
         {
             towerToBuild = tower;
+
         }
+        public void BuildTowerOn(HGK.Node node)
+        {
+            if (PlayerStats.Money < towerToBuild.cost)
+            {
+                Debug.Log("Not enough money to build that!");
+                return;
+            }
+            PlayerStats.Money -= towerToBuild.cost;
+            GameObject tower = (GameObject)Instantiate(towerToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+            node.tower = tower;
 
+            Debug.Log("Tower build! Money left: " + PlayerStats.Money);
+        }
     }
-
 }

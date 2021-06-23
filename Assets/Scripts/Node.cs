@@ -9,6 +9,7 @@ namespace HGK
     {
         public Material hoverMat;
         public Vector3 positionOffset;
+        public Material notEnoughMoneyMat;
 
         [Header("Optional")]
         public GameObject tower;
@@ -52,9 +53,19 @@ namespace HGK
                 return;
 
             if (!buildManager.canBuild)
+            {
                 return;
+            }
+            if (buildManager.HasMoney)
+            {
+                rend.material = hoverMat;
 
-            rend.material = hoverMat;
+            }
+            else 
+            {
+                rend.material = notEnoughMoneyMat;
+            }
+            
 
         }
 

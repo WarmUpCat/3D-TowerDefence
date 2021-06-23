@@ -56,8 +56,8 @@ namespace HGK
             GameObject effectIns = Instantiate(bulletImpactEffect, transform.position, transform.rotation);
             Destroy(effectIns, 2f);
 
-            //Destroy(target.gameObject);
-            Destroy(gameObject);
+            Damage(target);
+           // Destroy(gameObject);
 
         }
 
@@ -73,7 +73,8 @@ namespace HGK
             //in the case the object does not have enemy script
             if(e != null)
             {
-                e.TakeDamage(damage);
+                e.TakeDamage(20);
+                Debug.Log("took Damage" + damage);
             }
             
         }

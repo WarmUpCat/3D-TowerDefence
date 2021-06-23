@@ -9,7 +9,7 @@ namespace HGK
         public float Speed = 10f;
 
         //for taking damage
-        public float startHealth = 100;
+        public float startHealth; //= 100;
         private float health;
 
 
@@ -63,7 +63,7 @@ namespace HGK
         void Die()
         {
             //To do: get money for value of killing enemy
-            //PlayerStats.Money += value;
+            PlayerStats.Money += value;
 
             //chage static counter when enemey die also in Endpath() below
             WaveSpawner.EnemiesALive--; 

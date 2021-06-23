@@ -110,5 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverMat: {fileID: 2100000, guid: 9b28e2445da1df443a530c6a48f07ec3, type: 2}
   positionOffset: {x: 0, y: 2.2, z: 0}
+  notEnoughMoneyMat: {fileID: 2100000, guid: 1665b9a5ae82c644b99f338f1e907172, type: 2}
   tower: {fileID: 0}
   startMat: {fileID: 2100000, guid: 65399349be6de2d408b19772ec07447d, type: 2}

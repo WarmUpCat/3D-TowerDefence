@@ -70,6 +70,7 @@ namespace HGK
             for (int i = 0; i < wave.count; i++)
             {
                 SpawnEnemy(wave.enemy);
+                SpawnEnemy2(wave.enemy);
                 yield return new WaitForSeconds(1f / wave.rate);
             }
             //increment after loop
@@ -87,7 +88,13 @@ namespace HGK
             //increase enemies alive static int every time enemy is instantiate, then later reduce when killed in Enemy script die()
             EnemiesALive++;
         }
-
+        void SpawnEnemy2(GameObject enemy2)
+        {
+            // what will be spawnwd , then where ot wil be spawned
+            Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+            //increase enemies alive static int every time enemy is instantiate, then later reduce when killed in Enemy script die()
+            EnemiesALive++;
+        }
 
     }
 

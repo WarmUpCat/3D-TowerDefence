@@ -17,6 +17,7 @@ namespace Cody_Towers
         }
         public GameObject standartTowerPrefab;
         public GameObject anotherTowerPrefab;
+        public GameObject wallPrefab;
         public GameObject buildEffect;
         //private GameObject towerToBuild;
         public TowerBluePrint towerToBuild;

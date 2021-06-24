@@ -28,7 +28,7 @@ namespace HGK
 
         public Vector3 GetBuildPosition()
         {
-            return transform.position + positionOffset;
+            return transform.position+ positionOffset;
 
         }
         private void OnMouseDown()

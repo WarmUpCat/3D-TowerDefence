@@ -28,6 +28,7 @@ namespace HGK
         //}
         public Cody_Towers.TowerBluePrint standardTower;
         public Cody_Towers.TowerBluePrint anothertower;
+        public Cody_Towers.TowerBluePrint wallTower;
         Cody_Towers.BuildManager buildManager;
         private void Start()
         {
@@ -42,6 +43,10 @@ namespace HGK
         {
             Debug.Log("Another Tower Selected");
             buildManager.SelectTowerToBuild(anothertower);
+        }
+        public void SelectWall()
+        {
+            buildManager.SelectTowerToBuild(wallTower);
         }
     }
 

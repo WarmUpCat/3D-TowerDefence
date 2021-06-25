@@ -23,7 +23,7 @@ namespace HGK
             rend = GetComponent<Renderer>();
             rend.material = startMat;
             buildManager = Cody_Towers.BuildManager.instance;
-
+            buildManager.towerToBuild = null;
         }
 
         public Vector3 GetBuildPosition()
@@ -36,16 +36,17 @@ namespace HGK
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if (!buildManager.canBuild)
-                return;
+            
             if (tower != null)
             {
-                Debug.Log("Cant Build There!!! - TODO: Display on screen");
+                buildManager.SelectNode(this);
                 return;
 
             }
-            buildManager.BuildTowerOn(this);
+            if (!buildManager.canBuild)
+                return;
 
+            buildManager.BuildTowerOn(this);
         }
         private void OnMouseEnter()
         {
@@ -56,15 +57,21 @@ namespace HGK
             {
                 return;
             }
-            if (buildManager.HasMoney)
+            if (buildManager.HasMoney && buildManager.towerToBuild != null)
             {
                 rend.material = hoverMat;
 
             }
-            else 
+            else if(!buildManager.HasMoney && buildManager.towerToBuild != null)
             {
                 rend.material = notEnoughMoneyMat;
+
             }
+            if (buildManager.towerToBuild == null)
+            {
+                rend.material = startMat;
+            }
+          
             
 
         }

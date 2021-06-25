@@ -11,7 +11,7 @@ namespace HGK
         //for taking damage
         public float startHealth; //= 100;
         private float health;
-
+        public GameObject deathEffect;
 
         //for getting money for killing enemy
         //used in void Die() below and sffects playerstats variable money-yet to nbe made
@@ -66,7 +66,9 @@ namespace HGK
             PlayerStats.Money += value;
 
             //chage static counter when enemey die also in Endpath() below
-            WaveSpawner.EnemiesALive--; 
+            WaveSpawner.EnemiesALive--;
+           // GameObject Effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+           // Destroy(Effect, 5f);
             //kill if health = 0
             Destroy(gameObject);
         }

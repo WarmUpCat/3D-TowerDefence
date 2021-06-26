@@ -11967,9 +11967,9 @@ GameObject:
   - component: {fileID: 602784697}
   - component: {fileID: 602784699}
   - component: {fileID: 602784700}
-  - component: {fileID: 602784701}
   - component: {fileID: 602784702}
   - component: {fileID: 602784703}
+  - component: {fileID: 602784701}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
